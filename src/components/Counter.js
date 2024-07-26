@@ -1,9 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux'; //redux a bağlanmamızı sağlaayacak. 
 
-export default class Counter extends Component {
+class Counter extends Component {
   render() {
     return (
-      <div>Counter</div>
+      <div>
+        <h1>{this.props.counter}</h1>
+      </div>
     )
   }
 }
+
+function mapStateToProps(state){
+  return {counter:state.counterReducer}
+}
+
+export default connect(mapStateToProps)(Counter);
